@@ -1,7 +1,9 @@
+import axiosClient from '../config/axiosConfig';
+
 import {
   SUBMIT_CREDENTIALS,
-  /* SUBMIT_CREDENTIALS_SUCCESS,
-  SUBMIT_CREDENTIALS_ERROR, */
+  SUBMIT_CREDENTIALS_SUCCESS,
+  SUBMIT_CREDENTIALS_ERROR,
 } from '../types';
 
 const submitCredentialsStart = () => ({
@@ -9,17 +11,23 @@ const submitCredentialsStart = () => ({
   payload: true,
 });
 
-export default /* crearNuevoProductoAction = */ userData => async dispatch => {
-  dispatch(submitCredentialsStart(userData)); // delete userData as params
+const submitCredentialsSuccess = () => ({
+  type: SUBMIT_CREDENTIALS_SUCCESS,
+});
 
-  /* try {
-    // Insertar en la API
-    await clienteAxios.post('productos', producto);
-    // si todo sale bien actualiza el state
-    // Alertar
-    dispatch(agregarProductoExito(producto));
+const submitCredentialsError = error => ({
+  type: SUBMIT_CREDENTIALS_ERROR,
+  payload: error,
+});
+
+export default userData => async dispatch => {
+  dispatch(submitCredentialsStart());
+  try {
+    await axiosClient.post('registrations', userData, {
+      withCredentials: true,
+    });
+    dispatch(submitCredentialsSuccess());
   } catch (e) {
-    // Alertar
-    dispatch(agregarProductoError(true));
-  } */
+    dispatch(submitCredentialsError(e));
+  }
 };
