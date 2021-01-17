@@ -1,7 +1,7 @@
 import {
   SUBMIT_CREDENTIALS,
-  SUBMIT_CREDENTIALS_SUCCESS,
-  SUBMIT_CREDENTIALS_ERROR,
+  /* SUBMIT_CREDENTIALS_SUCCESS,
+  SUBMIT_CREDENTIALS_ERROR, */
 } from '../types';
 
 const submitCredentialsStart = () => ({
