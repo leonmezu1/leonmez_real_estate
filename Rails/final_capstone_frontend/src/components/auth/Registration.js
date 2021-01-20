@@ -1,8 +1,9 @@
 /* eslint-disable camelcase */
 
 import styled from 'styled-components';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import submitRegistration from '../../actions/authActions';
 
 const Form = styled.form`
@@ -45,6 +46,11 @@ const Error = styled.div`
 `;
 
 const Registration = () => {
+  const loggedIn = useSelector(state => state.auth.loggedIn);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  // States
   const [data, setData] = useState({
     email: '',
     password: '',
@@ -52,7 +58,15 @@ const Registration = () => {
   });
   const [error, setError] = useState(false);
 
-  const dispatch = useDispatch();
+  // UseEffect
+
+  useEffect(() => {
+    if (loggedIn) history.push('/dashboard');
+
+    return () => null;
+  }, [loggedIn]);
+
+  // Triggers
 
   const onType = e => {
     setData({
