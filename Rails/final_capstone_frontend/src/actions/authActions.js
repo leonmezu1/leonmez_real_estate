@@ -4,6 +4,8 @@ import {
   SUBMIT_CREDENTIALS,
   SUBMIT_CREDENTIALS_SUCCESS,
   SUBMIT_CREDENTIALS_ERROR,
+  LOGGED_IN,
+  LOGGED_OUT,
 } from '../types';
 
 const submitCredentialsStart = () => ({
@@ -20,14 +22,29 @@ const submitCredentialsError = error => ({
   payload: error,
 });
 
+const submitLogin = () => ({
+  type: LOGGED_IN,
+  payload: true,
+});
+
+const submitLogout = () => ({
+  type: LOGGED_OUT,
+  payload: false,
+});
+
 export default userData => async dispatch => {
   dispatch(submitCredentialsStart());
   try {
-    await axiosClient.post('registrations', userData, {
+    const response = await axiosClient.post('registrations', userData, {
       withCredentials: true,
     });
-    dispatch(submitCredentialsSuccess());
+
+    if (response.status === 200) {
+      dispatch(submitCredentialsSuccess());
+      dispatch(submitLogin());
+    }
   } catch (e) {
     dispatch(submitCredentialsError(e));
+    dispatch(submitLogout());
   }
 };
