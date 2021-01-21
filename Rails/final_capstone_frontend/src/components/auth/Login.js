@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import submitRegistration from '../../actions/authActions';
+import submitLogin from '../../actions/authActions';
 
 const Form = styled.form`
   display: flex;
@@ -45,7 +45,7 @@ const Error = styled.div`
   text-align: center;
 `;
 
-const Registration = () => {
+const Login = () => {
   const loggedIn = useSelector(state => state.auth.loggedIn);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -54,7 +54,6 @@ const Registration = () => {
   const [data, setData] = useState({
     email: '',
     password: '',
-    password_confirmation: '',
   });
   const [error, setError] = useState(false);
 
@@ -75,7 +74,7 @@ const Registration = () => {
     });
   };
 
-  const submitRegistrationForm = e => {
+  const submitLoginForm = e => {
     e.preventDefault();
     const { email, password, password_confirmation } = data;
     if ([email, password, password_confirmation].some(ele => ele === '')) {
@@ -83,13 +82,13 @@ const Registration = () => {
       return;
     }
     setError(false);
-    dispatch(submitRegistration({ user: data }, 'registrations'));
+    dispatch(submitLogin({ user: data }, 'login'));
   };
 
   return (
     <>
       {error ? <Error>Submited data has errors</Error> : null}
-      <Form onSubmit={submitRegistrationForm}>
+      <Form onSubmit={submitLoginForm}>
         <Label htmlFor="email">
           Email
           <Input type="email" name="email" id="email" onChange={onType} />
@@ -103,19 +102,10 @@ const Registration = () => {
             onChange={onType}
           />
         </Label>
-        <Label htmlFor="password_confirmation">
-          Password Confirmation
-          <Input
-            type="password"
-            name="password_confirmation"
-            id="password_confirmation"
-            onChange={onType}
-          />
-        </Label>
-        <Button type="submit">Register</Button>
+        <Button type="submit">Log in</Button>
       </Form>
     </>
   );
 };
 
-export default Registration;
+export default Login;

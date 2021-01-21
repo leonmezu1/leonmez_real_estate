@@ -24,7 +24,6 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        loggedIn: true,
         error: null,
       };
     case SUBMIT_CREDENTIALS_ERROR:

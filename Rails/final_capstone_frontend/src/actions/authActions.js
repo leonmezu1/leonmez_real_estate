@@ -32,19 +32,22 @@ const submitLogout = () => ({
   payload: false,
 });
 
-export default userData => async dispatch => {
+export default (userData, path) => async dispatch => {
   dispatch(submitCredentialsStart());
   try {
-    const response = await axiosClient.post('registrations', userData, {
-      withCredentials: true,
-    });
+    const response = await axiosClient.post(path, userData);
 
-    if (response.status === 200) {
-      dispatch(submitCredentialsSuccess());
-      dispatch(submitLogin());
-    }
+    localStorage.setItem('capstone_api', response.data.jwt);
+    dispatch(submitCredentialsSuccess());
+    dispatch(submitLogin());
   } catch (e) {
     dispatch(submitCredentialsError(e));
     dispatch(submitLogout());
   }
+};
+
+export const loginStatus = status => dispatch => {
+  // eslint-disable-next-line semi
+  // eslint-disable-next-line no-unused-expressions
+  status ? dispatch(submitLogin()) : dispatch(submitLogout());
 };

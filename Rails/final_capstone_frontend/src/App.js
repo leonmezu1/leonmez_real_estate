@@ -1,20 +1,27 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Provider } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { checkLoggedIn } from './config/axiosConfig';
+import { loginStatus } from './actions/authActions';
 import Dashboard from './components/Dashboard';
 import Home from './components/Home';
-import store from './store';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(async () => {
+    dispatch(loginStatus(await checkLoggedIn()));
+    return () => {};
+  }, []);
+
   return (
     <div className="App">
-      <Provider store={store}>
-        <Router>
-          <Switch>
-            <Route exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/" component={Home} />
-          </Switch>
-        </Router>
-      </Provider>
+      <Router>
+        <Switch>
+          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/" component={Home} />
+        </Switch>
+      </Router>
     </div>
   );
 }
