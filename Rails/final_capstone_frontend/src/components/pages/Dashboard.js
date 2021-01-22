@@ -1,13 +1,13 @@
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import LogoutButton from './LogoutButton';
+import LogoutButton from '../LogoutButton';
 
 const Dashboard = () => {
   const loggedIn = useSelector(state => state.auth.loggedIn);
 
   const main = (
     <>
-      <h1>I &aposm; a dashboard</h1>
+      <h1>I `&aposm;` a dashboard</h1>
       <LogoutButton />
       {`${loggedIn}`}
     </>

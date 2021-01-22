@@ -1,6 +1,6 @@
-import Login from './auth/Login';
-import Registration from './auth/Registration';
-import LogoutButton from './LogoutButton';
+import Login from '../auth/Login';
+import Registration from '../auth/Registration';
+import LogoutButton from '../LogoutButton';
 
 const Home = () => (
   <>
