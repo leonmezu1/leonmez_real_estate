@@ -27,10 +27,13 @@ const submitLogin = () => ({
   payload: true,
 });
 
-const submitLogout = () => ({
-  type: LOGGED_OUT,
-  payload: false,
-});
+const submitLogout = () => {
+  localStorage.setItem('capstone_api', '');
+  return {
+    type: LOGGED_OUT,
+    payload: false,
+  };
+};
 
 export default (userData, path) => async dispatch => {
   dispatch(submitCredentialsStart());

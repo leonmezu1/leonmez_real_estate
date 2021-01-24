@@ -21,6 +21,4 @@ export const checkLoggedIn = async () => {
   return loggedIn;
 };
 
-export const logout = async () => base.delete('logout');
-
 export default base;

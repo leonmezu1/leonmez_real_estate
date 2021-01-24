@@ -1,26 +1,44 @@
 /* eslint-disable react/no-array-index-key */
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import menuData from '../data/menuData';
 
-const Logo = styled(Link)`
-  color: #fff;
-  text-decoration: none;
-`;
+import { Link } from 'react-router-dom';
+import styled, { css } from 'styled-components/macro';
+import menuData from '../data/menuData';
 
 const MenuBars = styled.i``;
 
-const NavMenu = styled.div``;
+const NavMenu = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
-const MenuLink = styled(Link)`
+const StyledLink = css`
   color: #fff;
+  display: flex;
+  padding: 0 1rem;
+  height: 100%;
+  cursor: pointer;
+  align-items: center;
 `;
 
 const Nav = styled.nav`
   width: 100%;
   height: 6rem;
+  padding: 1rem 2rem;
+  z-index: 500;
+  position: fixed;
   background: #000;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+`;
+
+const Logo = styled(Link)`
+  ${StyledLink}
+`;
+
+const MenuLink = styled(Link)`
+  ${StyledLink}
 `;
 
 const Navbar = () => {
