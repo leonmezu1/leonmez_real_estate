@@ -1,11 +1,13 @@
 /* eslint-disable react/no-array-index-key */
 
 import { Link } from 'react-router-dom';
-import styled, { css } from 'styled-components/macro';
+import { useState } from 'react';
 import { RiMenu4Fill } from 'react-icons/ri';
 import { FaUserCircle } from 'react-icons/fa';
-import Button from './Button';
+import styled, { css } from 'styled-components/macro';
+import ButtonLink from './ButtonLink';
 import menuData from '../data/menuData';
+import Modal from './Modal';
 
 const MenuBars = styled.div`
   color: #000d1a;
@@ -24,6 +26,7 @@ const MenuBars = styled.div`
 const NavMenu = styled.div`
   display: flex;
   align-items: center;
+  justify-self: center;
 
   @media screen and (max-width: 768px) {
     display: none;
@@ -94,35 +97,42 @@ const ButtonWrapper = styled.div`
   align-items: center;
 `;
 
-const toggleAuthModal = () => {};
-
 const Navbar = () => {
   const content = 'HOME';
 
+  const [showModal, setshowModal] = useState(false);
+
+  const toggleAuthModal = () => {
+    setshowModal(!showModal);
+  };
+
   return (
-    <Nav>
-      <Wrapper>
-        <Logo to="/">{content}</Logo>
-        <NavMenu>
-          {menuData.map((menuItem, index) => (
-            <MenuLink to={menuItem.link} key={index}>
-              {menuItem.title}
-            </MenuLink>
-          ))}
-        </NavMenu>
-        <ButtonWrapper>
-          <NavBtn>
-            <Button to="/contact" weight="700;">
-              Sell or Host
-            </Button>
-          </NavBtn>
-          <MenuBars onClick={toggleAuthModal}>
-            <FaUserCircle />
-            <RiMenu4Fill />
-          </MenuBars>
-        </ButtonWrapper>
-      </Wrapper>
-    </Nav>
+    <>
+      <Nav>
+        <Wrapper>
+          <Logo to="/">{content}</Logo>
+          <NavMenu>
+            {menuData.map((menuItem, index) => (
+              <MenuLink to={menuItem.link} key={index}>
+                {menuItem.title}
+              </MenuLink>
+            ))}
+          </NavMenu>
+          <ButtonWrapper>
+            <NavBtn>
+              <ButtonLink to="/contact" weight="700;">
+                Sell or Host
+              </ButtonLink>
+            </NavBtn>
+            <MenuBars onClick={toggleAuthModal}>
+              <FaUserCircle />
+              <RiMenu4Fill />
+            </MenuBars>
+          </ButtonWrapper>
+        </Wrapper>
+      </Nav>
+      <Modal show={showModal} />
+    </>
   );
 };
 
