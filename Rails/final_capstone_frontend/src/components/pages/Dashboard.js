@@ -1,5 +1,4 @@
 import { useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import LogoutButton from '../LogoutButton';
 
 const Dashboard = () => {
@@ -13,9 +12,7 @@ const Dashboard = () => {
     </>
   );
 
-  const redirect = <Redirect to="/" />;
-
-  return <>{loggedIn ? main : redirect}</>;
+  return <>{loggedIn ? main : null}</>;
 };
 
 export default Dashboard;
