@@ -1,22 +1,12 @@
 import PropTypes from 'prop-types';
 import { useEffect, useRef, useCallback } from 'react';
-import { useSpring, animated } from 'react-spring';
 import { Background, StyledModal } from './styledBases';
 
 const ActionsModal = props => {
-  const {
-    children, showModal, setShowModal, auth,
-  } = props;
+  // eslint-disable-next-line object-curly-newline
+  const { children, showModal, setShowModal, auth } = props;
 
   const modalRef = useRef();
-
-  const animation = useSpring({
-    config: {
-      duration: 250,
-    },
-    opacity: showModal ? 1 : 0,
-    transform: showModal ? 'translateY(0%)' : 'translateY(-100%)',
-  });
 
   const closeModal = e => {
     if (modalRef.current === e.target) {
@@ -39,9 +29,7 @@ const ActionsModal = props => {
 
   return showModal ? (
     <Background ref={modalRef} onClick={closeModal} auth={auth}>
-      <animated.div animation={animation}>
-        <StyledModal auth={auth}>{children}</StyledModal>
-      </animated.div>
+      <StyledModal auth={auth}>{children}</StyledModal>
     </Background>
   ) : null;
 };

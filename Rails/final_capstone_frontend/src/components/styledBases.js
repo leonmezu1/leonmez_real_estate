@@ -1,5 +1,15 @@
-import styled, { css } from 'styled-components/macro';
+import styled, { css, keyframes } from 'styled-components/macro';
 import { Link } from 'react-router-dom';
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`;
 
 export const BaseButton = css`
   background: ${({ primary }) => (primary ? '#000d1a' : '#fff')};
@@ -177,6 +187,19 @@ export const ActionsContainer = styled.div`
 
   box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px,
     rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+
+  @media screen and (max-width: 768px) {
+    width: 50vw;
+
+    & > * {
+      justify-content: center;
+    }
+
+    span {
+      width: 100%;
+      padding-left: 0;
+    }
+  }
 `;
 
 export const Background = styled.div`
@@ -188,6 +211,7 @@ export const Background = styled.div`
   position: absolute;
   z-index: 1000;
   background: ${({ auth }) => (auth ? 'rgba(0, 0, 0, 0.25)' : 'transparent')};
+  animation: ${fadeIn} 0.25s linear;
 `;
 
 export const StyledModal = styled.div`
@@ -196,6 +220,13 @@ export const StyledModal = styled.div`
   left: ${({ auth }) => (auth ? '50%' : null)};
   right: ${({ auth }) => (auth ? '0' : '2.2rem')};
   transform: ${({ auth }) => (auth ? 'translate(-50%, -50%)' : null)};
+
+  @media screen and (max-width: 768px) {
+    top: ${({ auth }) => (auth ? '50%' : 'calc(90vh - 12rem)')};
+    right: ${({ auth }) => (auth ? '0' : null)};
+    transform: ${({ auth }) => (auth ? 'translate(-50%, -50%)' : 'translate(-50%, 0)')};
+    left: 50%;
+  }
 `;
 
 export const Form = styled.form`
