@@ -1,12 +1,11 @@
+import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import styled from 'styled-components';
 import { loginStatus } from '../actions/authActions';
+import { Button } from './styledBases';
 
 const BtnLink = styled.button`
-  padding: 1rem;
-  text-align: center;
-  text-decoration: none;
+  ${Button}
 `;
 
 const LogoutButton = () => {

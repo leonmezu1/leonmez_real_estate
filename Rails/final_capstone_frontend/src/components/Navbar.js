@@ -1,9 +1,11 @@
 /* eslint-disable react/no-array-index-key */
 
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { RiMenu4Fill } from 'react-icons/ri';
 import { FaUserCircle } from 'react-icons/fa';
+import { loginStatus } from '../actions/authActions';
 import ButtonLink from './ButtonLink';
 import menuData from '../data/menuData';
 import Registration from './auth/Registration';
@@ -24,13 +26,25 @@ import {
 const Navbar = () => {
   const content = 'HOME';
 
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const loggedIn = useSelector(state => state.auth.loggedIn);
+
   const [showModal, setShowModal] = useState(false);
   const [showAuthModal, setShowAuthModal] = useState({
     status: false,
     target: '',
   });
 
-  const loggedIn = useSelector(state => state.auth.loggedIn);
+  useEffect(() => {
+    if (loggedIn) {
+      setShowAuthModal({
+        status: false,
+        target: '',
+      });
+      setShowModal(false);
+    }
+  }, [loggedIn]);
 
   const toggleUserModal = () => {
     const { status } = showAuthModal;
@@ -53,12 +67,15 @@ const Navbar = () => {
   };
 
   const handleKeyPress = e => {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && e.target.getAttribute('name') !== 'logout') {
       setShowModal(false);
       setShowAuthModal({
         status: true,
         target: e.target.getAttribute('name'),
       });
+    } else {
+      dispatch(loginStatus(false));
+      history.push('/');
     }
   };
 
@@ -92,7 +109,18 @@ const Navbar = () => {
       <ActionsModal showModal={showModal} setShowModal={setShowModal}>
         <ActionsContainer>
           {loggedIn ? (
-            <span>Log out</span>
+            <span
+              role="button"
+              name="logout"
+              tabIndex="0"
+              onKeyPress={handleKeyPress}
+              onClick={() => {
+                dispatch(loginStatus(false));
+                history.push('/');
+              }}
+            >
+              Log out
+            </span>
           ) : (
             <>
               <span
