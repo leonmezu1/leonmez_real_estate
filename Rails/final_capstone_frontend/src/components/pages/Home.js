@@ -1,8 +1,9 @@
+import sliderData from '../../data/sliderData';
 import Hero from '../Hero';
 
 const Home = () => (
   <>
-    <Hero />
+    <Hero slides={sliderData} />
   </>
 );
 

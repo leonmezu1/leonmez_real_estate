@@ -28,6 +28,7 @@ import Home54 from '../images/Home5/4.jpg';
 
 export default {
   home1: {
+    id: 1,
     hero: HomeHero1,
     slides: [Home11, Home12, Home13, Home14],
     title: 'Med001 - House in Medelllin',
@@ -38,6 +39,7 @@ export default {
     price: 'US$ 5,500,000.00',
   },
   home2: {
+    id: 2,
     hero: HomeHero2,
     slides: [Home21, Home22, Home23, Home24, Home25],
     title: 'Anp001 - Villa in Anapoima',
@@ -48,6 +50,7 @@ export default {
     price: 'US$ 1,250,280.00',
   },
   home3: {
+    id: 3,
     hero: HomeHero3,
     slides: [Home31, Home32, Home33, Home34, Home35],
     title: 'Ley002 - House in Villa de Leyva',
@@ -58,6 +61,7 @@ export default {
     price: 'US$ 361,257.65',
   },
   home4: {
+    id: 4,
     hero: HomeHero4,
     slides: [Home41, Home42, Home43, Home44],
     title: 'Med002 - Penthouse in Medellin',
@@ -68,6 +72,7 @@ export default {
     price: 'US$ 2,000,000',
   },
   home5: {
+    id: 5,
     hero: HomeHero5,
     slides: [Home51, Home52, Home53, Home54],
     title: 'Med008 - Penthouse in Medellin',

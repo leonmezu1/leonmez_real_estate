@@ -14,9 +14,10 @@ const fadeIn = keyframes`
 export const BaseButton = css`
   background: ${({ primary }) => (primary ? '#000d1a' : '#fff')};
   padding: ${({ big }) => (big ? '1.6rem' : '1.2rem')};
-  color: ${({ primary }) => (primary ? '#000d1a' : '#000')};
+  color: ${({ primary }) => (primary ? '#fff' : '#000')};
   font-size: ${({ big }) => (big ? '2rem' : '1.6rem')};
-  font-weight: ${({ weight }) => weight}
+  font-weight: ${({ weight }) => weight};
+  width: ${({ width }) => width};
   margin-right: 1rem;
   white-space: wrap;
   outline: none;
@@ -32,9 +33,9 @@ export const BaseButton = css`
   border-radius: 1rem;
 
   &:hover {
-    background: #000;
-    border: 2px solid #fff;
-    color: #fff;
+    background: ${({ primary }) => (primary ? '#fff' : '#000')};
+    color: ${({ primary }) => (primary ? '#000' : '#fff')};
+    border: ${({ primary }) => (primary ? '2px solid #000' : '2px solid #fff')};
   }
 `;
 
@@ -160,6 +161,7 @@ export const ActionsContainer = styled.div`
   border-radius: 1rem;
   padding: 0.5rem 0;
   overflow: hidden;
+  background: #fff;
 
   & > * {
     align-items: center;
@@ -209,7 +211,7 @@ export const Background = styled.div`
   align-items: center;
   justify-content: center;
   position: absolute;
-  z-index: 1000;
+  z-index: 5000;
   background: ${({ auth }) => (auth ? 'rgba(0, 0, 0, 0.25)' : 'transparent')};
   animation: ${fadeIn} 0.25s linear;
 `;
