@@ -204,7 +204,7 @@ export const ActionsContainer = styled.div`
 
 export const Background = styled.div`
   width: 100vw;
-  height: calc(100vh - 6rem);
+  height: calc(100% - 6rem);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -222,8 +222,8 @@ export const StyledModal = styled.div`
   transform: ${({ auth }) => (auth ? 'translate(-50%, -50%)' : null)};
 
   @media screen and (max-width: 768px) {
-    top: ${({ auth }) => (auth ? '50%' : 'calc(90vh - 12rem)')};
-    right: ${({ auth }) => (auth ? '0' : null)};
+    top: ${({ auth }) => (auth ? '50%' : 'calc(100% - 20rem)')};
+    right: ${({ auth }) => (auth ? '0' : '0')};
     transform: ${({ auth }) => (auth ? 'translate(-50%, -50%)' : 'translate(-50%, 0)')};
     left: 50%;
   }

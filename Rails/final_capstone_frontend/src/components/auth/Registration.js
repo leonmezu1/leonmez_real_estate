@@ -12,8 +12,6 @@ const Registration = () => {
   const loggedIn = useSelector(state => state.auth.loggedIn);
   const dispatch = useDispatch();
   const history = useHistory();
-
-  // States
   const [data, setData] = useState({
     email: '',
     password: '',
@@ -21,15 +19,11 @@ const Registration = () => {
   });
   const [error, setError] = useState(false);
 
-  // UseEffect
-
   useEffect(() => {
     if (loggedIn) history.push('/dashboard');
 
     return () => null;
   }, [loggedIn]);
-
-  // Triggers
 
   const onType = e => {
     setData({

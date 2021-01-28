@@ -36,13 +36,17 @@ const Navbar = () => {
     target: '',
   });
 
+  const closeModals = () => {
+    setShowAuthModal({
+      status: false,
+      target: '',
+    });
+    setShowModal(false);
+  };
+
   useEffect(() => {
     if (loggedIn) {
-      setShowAuthModal({
-        status: false,
-        target: '',
-      });
-      setShowModal(false);
+      closeModals();
     }
   }, [loggedIn]);
 
@@ -88,7 +92,11 @@ const Navbar = () => {
           <Logo to="/">{content}</Logo>
           <NavMenu>
             {menuData.map((menuItem, index) => (
-              <MenuLink to={menuItem.link} key={index}>
+              <MenuLink
+                to={menuItem.link}
+                key={index}
+                onClick={() => closeModals()}
+              >
                 {menuItem.title}
               </MenuLink>
             ))}
@@ -109,24 +117,37 @@ const Navbar = () => {
       <ActionsModal showModal={showModal} setShowModal={setShowModal}>
         <ActionsContainer>
           {loggedIn ? (
-            <span
-              role="button"
-              name="logout"
-              tabIndex="0"
-              onKeyPress={handleKeyPress}
-              onClick={() => {
-                dispatch(loginStatus(false));
-                history.push('/');
-              }}
-            >
-              Log out
-            </span>
+            <>
+              <span
+                role="button"
+                name="dashboard"
+                tabIndex="-2"
+                onKeyPress={handleKeyPress}
+                onClick={() => {
+                  history.push('/dashboard');
+                }}
+              >
+                Dashboard
+              </span>
+              <span
+                role="button"
+                name="logout"
+                tabIndex="-1"
+                onKeyPress={handleKeyPress}
+                onClick={() => {
+                  dispatch(loginStatus(false));
+                  history.push('/');
+                }}
+              >
+                Log out
+              </span>
+            </>
           ) : (
             <>
               <span
                 role="button"
                 name="register"
-                tabIndex="-1"
+                tabIndex="-2"
                 onClick={toggleAuthModal}
                 onKeyPress={handleKeyPress}
               >
@@ -135,7 +156,7 @@ const Navbar = () => {
               <span
                 name="login"
                 role="button"
-                tabIndex="0"
+                tabIndex="-1"
                 onClick={toggleAuthModal}
                 onKeyPress={handleKeyPress}
               >
@@ -143,7 +164,15 @@ const Navbar = () => {
               </span>
             </>
           )}
-          <span>Help</span>
+          <span
+            name="help"
+            role="button"
+            tabIndex="0"
+            onClick={() => history.push('/')}
+            onKeyPress={handleKeyPress}
+          >
+            Help
+          </span>
         </ActionsContainer>
       </ActionsModal>
       {status ? (

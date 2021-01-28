@@ -2,10 +2,9 @@ import PropTypes from 'prop-types';
 import { useEffect, useRef, useCallback } from 'react';
 import { Background, StyledModal } from './styledBases';
 
-const ActionsModal = props => {
-  // eslint-disable-next-line object-curly-newline
-  const { children, showModal, setShowModal, auth } = props;
-
+const ActionsModal = ({
+  children, showModal, setShowModal, auth,
+}) => {
   const modalRef = useRef();
 
   const closeModal = e => {

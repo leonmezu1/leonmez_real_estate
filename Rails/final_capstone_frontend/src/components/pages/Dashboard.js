@@ -5,12 +5,12 @@ const Dashboard = () => {
 
   const main = (
     <>
-      <h1>I `&aposm;` a dashboard</h1>
+      <h1>I&apos;m a dashboard</h1>
       {`${loggedIn}`}
     </>
   );
 
-  return <>{loggedIn ? main : null}</>;
+  return <>{main}</>;
 };
 
 export default Dashboard;
