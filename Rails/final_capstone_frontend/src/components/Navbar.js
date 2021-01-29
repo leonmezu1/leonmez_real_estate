@@ -121,7 +121,7 @@ const Navbar = () => {
               <span
                 role="button"
                 name="dashboard"
-                tabIndex="-2"
+                tabIndex="-5"
                 onKeyPress={handleKeyPress}
                 onClick={() => {
                   history.push('/dashboard');
@@ -132,7 +132,7 @@ const Navbar = () => {
               <span
                 role="button"
                 name="logout"
-                tabIndex="-1"
+                tabIndex="-4"
                 onKeyPress={handleKeyPress}
                 onClick={() => {
                   dispatch(loginStatus(false));
@@ -147,7 +147,7 @@ const Navbar = () => {
               <span
                 role="button"
                 name="register"
-                tabIndex="-2"
+                tabIndex="-5"
                 onClick={toggleAuthModal}
                 onKeyPress={handleKeyPress}
               >
@@ -156,7 +156,7 @@ const Navbar = () => {
               <span
                 name="login"
                 role="button"
-                tabIndex="-1"
+                tabIndex="-4"
                 onClick={toggleAuthModal}
                 onKeyPress={handleKeyPress}
               >
@@ -165,10 +165,37 @@ const Navbar = () => {
             </>
           )}
           <span
+            name="about"
+            role="button"
+            tabIndex="-3"
+            onClick={() => history.push('/about')}
+            onKeyPress={handleKeyPress}
+          >
+            About
+          </span>
+          <span
+            name="homes"
+            role="button"
+            tabIndex="-2"
+            onClick={() => history.push('/homes')}
+            onKeyPress={handleKeyPress}
+          >
+            Homes
+          </span>
+          <span
+            name="rentals"
+            role="button"
+            tabIndex="-1"
+            onClick={() => history.push('/rentals')}
+            onKeyPress={handleKeyPress}
+          >
+            Rentals
+          </span>
+          <span
             name="help"
             role="button"
             tabIndex="0"
-            onClick={() => history.push('/')}
+            onClick={() => history.push('/help')}
             onKeyPress={handleKeyPress}
           >
             Help

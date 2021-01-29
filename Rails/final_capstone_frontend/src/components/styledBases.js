@@ -1,3 +1,5 @@
+/* eslint-disable no-confusing-arrow */
+/* eslint-disable implicit-arrow-linebreak */
 import styled, { css, keyframes } from 'styled-components/macro';
 import { Link } from 'react-router-dom';
 
@@ -167,7 +169,7 @@ export const ActionsContainer = styled.div`
     align-items: center;
     justify-content: flex-start;
     display: flex;
-    height: 3rem;
+    height: 3.5rem;
     width: 12rem;
     cursor: pointer;
     padding-left: 2rem;
@@ -179,7 +181,12 @@ export const ActionsContainer = styled.div`
     background: #efeded;
   }
 
-  span:nth-child(2) {
+  span:first-child {
+    font-weight: bold;
+  }
+  span:nth-child(2),
+  span:nth-child(5) {
+    padding-bottom: 0.25rem;
     border-bottom: 1px solid lightgray;
   }
 
@@ -206,14 +213,19 @@ export const ActionsContainer = styled.div`
 
 export const Background = styled.div`
   width: 100vw;
-  height: calc(100% - 6rem);
+  height: 100vh;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
+  position: fixed;
   z-index: 5000;
   background: ${({ auth }) => (auth ? 'rgba(0, 0, 0, 0.25)' : 'transparent')};
   animation: ${fadeIn} 0.25s linear;
+
+  @media screen and (max-width: 768px) {
+    background: rgba(0, 0, 0, 0.55);
+  }
 `;
 
 export const StyledModal = styled.div`
@@ -224,9 +236,9 @@ export const StyledModal = styled.div`
   transform: ${({ auth }) => (auth ? 'translate(-50%, -50%)' : null)};
 
   @media screen and (max-width: 768px) {
-    top: ${({ auth }) => (auth ? '50%' : 'calc(100% - 20rem)')};
+    top: ${({ auth }) => (auth ? '50%' : '30vh')};
     right: ${({ auth }) => (auth ? '0' : '0')};
-    transform: ${({ auth }) => (auth ? 'translate(-50%, -50%)' : 'translate(-50%, 0)')};
+    transform: ${({ auth }) => auth ? 'translate(-50%, -50%)' : 'translate(-50%, 0)'};
     left: 50%;
   }
 `;

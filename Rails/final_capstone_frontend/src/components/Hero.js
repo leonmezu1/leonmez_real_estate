@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { IoMdArrowRoundForward } from 'react-icons/io';
@@ -33,6 +33,10 @@ const HeroSlider = styled.div`
   align-items: center;
   justify-content: center;
 
+  @media screen and (max-width: 768px) {
+    align-items: flex-start;
+  }
+
   &::before {
     content: '';
     position: absolute;
@@ -65,6 +69,7 @@ const HeroImage = styled.img`
   width: 100vw;
   height: 100vh;
   object-fit: cover;
+  object-position: 50% 50%;
 `;
 
 const HeroContent = styled.div`
@@ -89,6 +94,10 @@ const HeroContent = styled.div`
   p {
     font-size: clamp(1.6rem, 8vw, 2.4rem);
   }
+
+  @media screen and (max-width: 768px) {
+    margin-top: 10rem;
+  }
 `;
 
 const SliderButtons = styled.div`
@@ -97,11 +106,16 @@ const SliderButtons = styled.div`
   right: 5rem;
   display: flex;
   z-index: 2000;
+
+  @media screen and (max-width: 768px) {
+    bottom: 7.5rem;
+    right: 1.5rem;
+  }
 `;
 
 const ArrowButtons = css`
-  width: 3rem;
-  height: 3rem;
+  width: 2.5rem;
+  height: 2.5rem;
   color: #fff;
   cursor: pointer;
   background-color: #000d1a;
@@ -130,18 +144,32 @@ const NextArrow = styled(IoArrowForward)`
 
 const Hero = ({ slides }) => {
   const [current, setCurrent] = useState(0);
-  // eslint-disable-next-line prefer-destructuring
-  const length = slides.length;
-  // eslint-disable-next-line no-unused-vars
+  const { length } = slides;
   const timeOut = useRef(null);
 
+  useEffect(() => {
+    const nextSlide = () => {
+      setCurrent(current => (current === length - 1 ? 0 : current + 1));
+    };
+
+    timeOut.current = setTimeout(nextSlide, 5000);
+
+    return () => {
+      if (timeOut.current) clearTimeout(timeOut.current);
+    };
+  }, [current, length]);
+
   const nextSlide = () => {
+    if (timeOut.current) clearTimeout(timeOut.current);
     setCurrent(current === length - 1 ? 0 : current + 1);
   };
 
   const prevSlide = () => {
+    if (timeOut.current) clearTimeout(timeOut.current);
     setCurrent(current === 0 ? length - 1 : current - 1);
   };
+
+  if (!Array.isArray(slides) || length <= 0) return null;
 
   return (
     <HeroSection>
