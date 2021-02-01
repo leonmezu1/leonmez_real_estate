@@ -183,7 +183,7 @@ const Hero = ({ slides }) => {
                 <HeroContent>
                   <h1>{slide.home.title}</h1>
                   <p>{slide.home.price}</p>
-                  <ButtonLink to={slide.path} primary width="11rem;">
+                  <ButtonLink to={slide.path} width="11rem;" primary="true">
                     {slide.label}
                     <IoMdArrowRoundForward />
                   </ButtonLink>
