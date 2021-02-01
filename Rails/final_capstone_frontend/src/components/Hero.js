@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { IoMdArrowRoundForward } from 'react-icons/io';
 import { IoArrowForward, IoArrowBack } from 'react-icons/io5';
-
+import { softFadeIn } from './styledBases';
 import ButtonLink from './ButtonLink';
 
 const HeroSection = styled.section`
@@ -70,6 +70,7 @@ const HeroImage = styled.img`
   height: 100vh;
   object-fit: cover;
   object-position: 50% 50%;
+  animation: ${softFadeIn} 1s linear;
 `;
 
 const HeroContent = styled.div`
@@ -83,7 +84,7 @@ const HeroContent = styled.div`
 
   h1,
   p {
-    text-shadow: -4px 0px 6px rgba(0, 0, 0, 0.5);
+    text-shadow: -4px 0px 6px rgba(0, 0, 0, 0.9);
     margin-bottom: 1.5rem;
   }
 

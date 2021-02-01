@@ -82,4 +82,10 @@ export default {
       '500 square meters area, Impeccable design, with a lot of luxury and good taste, 3 full and luxurious suites, Master suite with heated bath and whirlpool, Spacious living and dining rooms with large windows that offer breathtaking views, Both natural and artificial lighting create an incredible and unique atmosphere, Exclusive wine cellar in one of the living rooms, Private gym',
     price: 'US$ 1,500,000',
   },
+  /*   index(n) {
+    return this[Object.keys(this)[n]];
+  },
+  array() {
+    return Object.values(this).filter(value => typeof value === 'object');
+  }, */
 };

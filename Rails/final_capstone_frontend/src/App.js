@@ -6,6 +6,9 @@ import { loginStatus } from './actions/authActions';
 import Dashboard from './components/pages/Dashboard';
 import Home from './components/pages/Home';
 import Navbar from './components/Navbar';
+import Homes from './components/pages/Homes';
+import About from './components/pages/About';
+import Rentals from './components/pages/Rentals';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -20,8 +23,12 @@ const App = () => {
       <Router>
         <Navbar />
         <Switch>
-          <Route exact path="/dashboard" component={Dashboard} />
-          <Route exact path="/" component={Home} />
+          <Route path="/rentals" exact component={Rentals} />
+          <Route path="/about" exact component={About} />
+          <Route path="/homes/:id" exact component={Homes} />
+          <Route path="/homes/:id" exact component={Homes} />
+          <Route path="/dashboard" exact component={Dashboard} />
+          <Route path="/" component={Home} />
         </Switch>
       </Router>
     </div>

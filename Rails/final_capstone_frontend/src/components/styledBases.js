@@ -1,11 +1,19 @@
-/* eslint-disable no-confusing-arrow */
-/* eslint-disable implicit-arrow-linebreak */
 import styled, { css, keyframes } from 'styled-components/macro';
 import { Link } from 'react-router-dom';
 
-const fadeIn = keyframes`
+export const fadeIn = keyframes`
   from {
     opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`;
+
+export const softFadeIn = keyframes`
+  from {
+    opacity: 0.75;
   }
 
   to {
@@ -238,7 +246,7 @@ export const StyledModal = styled.div`
   @media screen and (max-width: 768px) {
     top: ${({ auth }) => (auth ? '50%' : '30vh')};
     right: ${({ auth }) => (auth ? '0' : '0')};
-    transform: ${({ auth }) => auth ? 'translate(-50%, -50%)' : 'translate(-50%, 0)'};
+    transform: ${({ auth }) => (auth ? 'translate(-50%, -50%)' : 'translate(-50%, 0)')};
     left: 50%;
   }
 `;

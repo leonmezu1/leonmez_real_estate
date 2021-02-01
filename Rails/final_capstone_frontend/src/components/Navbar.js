@@ -103,7 +103,7 @@ const Navbar = () => {
           </NavMenu>
           <ButtonWrapper>
             <NavBtn>
-              <ButtonLink to="/contact" weight="700;">
+              <ButtonLink to="/sell" weight="700;">
                 Sell or Host
               </ButtonLink>
             </NavBtn>
