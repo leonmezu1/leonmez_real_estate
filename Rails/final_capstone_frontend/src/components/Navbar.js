@@ -22,6 +22,7 @@ import {
   NavMenu,
   Wrapper,
 } from './styledBases';
+import NavbarAction from './NavbarAction';
 
 const Navbar = () => {
   const content = 'HOME';
@@ -118,88 +119,83 @@ const Navbar = () => {
         <ActionsContainer>
           {loggedIn ? (
             <>
-              <span
-                role="button"
+              <NavbarAction
                 name="dashboard"
                 tabIndex="-5"
                 onKeyPress={handleKeyPress}
-                onClick={() => {
-                  history.push('/dashboard');
-                }}
+                path="/dashboard"
+                closeModals={closeModals}
               >
                 Dashboard
-              </span>
-              <span
-                role="button"
+              </NavbarAction>
+              <NavbarAction
                 name="logout"
                 tabIndex="-4"
                 onKeyPress={handleKeyPress}
-                onClick={() => {
-                  dispatch(loginStatus(false));
-                  history.push('/');
-                }}
+                path="/"
+                closeModals={closeModals}
               >
                 Log out
-              </span>
+              </NavbarAction>
             </>
           ) : (
             <>
-              <span
-                role="button"
+              <NavbarAction
                 name="register"
                 tabIndex="-5"
                 onClick={toggleAuthModal}
                 onKeyPress={handleKeyPress}
+                closeModals={closeModals}
               >
                 Register
-              </span>
-              <span
+              </NavbarAction>
+              <NavbarAction
                 name="login"
-                role="button"
                 tabIndex="-4"
                 onClick={toggleAuthModal}
                 onKeyPress={handleKeyPress}
+                closeModals={closeModals}
               >
                 Log in
-              </span>
+              </NavbarAction>
             </>
           )}
-          <span
+          <NavbarAction
             name="about"
-            role="button"
             tabIndex="-3"
-            onClick={() => history.push('/about')}
+            path="/about"
             onKeyPress={handleKeyPress}
+            closeModals={closeModals}
           >
             About
-          </span>
-          <span
+          </NavbarAction>
+          <NavbarAction
             name="homes"
-            role="button"
             tabIndex="-2"
-            onClick={() => history.push('/homes')}
+            path="/homes"
             onKeyPress={handleKeyPress}
+            closeModals={closeModals}
           >
             Homes
-          </span>
-          <span
+          </NavbarAction>
+          <NavbarAction
             name="rentals"
-            role="button"
             tabIndex="-1"
-            onClick={() => history.push('/rentals')}
+            path="/rentals"
             onKeyPress={handleKeyPress}
+            closeModals={closeModals}
           >
             Rentals
-          </span>
-          <span
+          </NavbarAction>
+          <NavbarAction
             name="help"
-            role="button"
             tabIndex="0"
-            onClick={() => history.push('/help')}
+            path="/help"
             onKeyPress={handleKeyPress}
+            closeModals={closeModals}
           >
             Help
-          </span>
+          </NavbarAction>
         </ActionsContainer>
       </ActionsModal>
       {status ? (
