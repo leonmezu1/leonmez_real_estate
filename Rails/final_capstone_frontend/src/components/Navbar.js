@@ -67,7 +67,7 @@ const Navbar = () => {
     setShowModal(false);
     setShowAuthModal({
       status: true,
-      target: e.target.getAttribute('name'),
+      target: e,
     });
   };
 
@@ -143,18 +143,16 @@ const Navbar = () => {
               <NavbarAction
                 name="register"
                 tabIndex="-5"
-                onClick={toggleAuthModal}
+                onClickAction={toggleAuthModal}
                 onKeyPress={handleKeyPress}
-                closeModals={closeModals}
               >
                 Register
               </NavbarAction>
               <NavbarAction
                 name="login"
                 tabIndex="-4"
-                onClick={toggleAuthModal}
+                onClickAction={toggleAuthModal}
                 onKeyPress={handleKeyPress}
-                closeModals={closeModals}
               >
                 Log in
               </NavbarAction>

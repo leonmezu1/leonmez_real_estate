@@ -9,6 +9,7 @@ const NavbarAction = ({
   children,
   path,
   closeModals,
+  onClickAction,
 }) => {
   const history = useHistory();
 
@@ -19,6 +20,7 @@ const NavbarAction = ({
       tabIndex={tabIndex}
       onKeyPress={onKeyPress}
       onClick={() => {
+        if (onClickAction) onClickAction(name);
         if (closeModals) closeModals?.();
         if (path) history.push(path);
       }}
@@ -33,12 +35,14 @@ NavbarAction.propTypes = {
   tabIndex: PropTypes.string.isRequired,
   onKeyPress: PropTypes.func.isRequired,
   closeModals: PropTypes.func,
+  onClickAction: PropTypes.func,
   path: PropTypes.string,
   children: PropTypes.string.isRequired,
 };
 
 NavbarAction.defaultProps = {
   closeModals: null,
+  onClickAction: null,
   path: null,
 };
 

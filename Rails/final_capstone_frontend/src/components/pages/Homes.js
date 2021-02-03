@@ -4,7 +4,7 @@ const Homes = () => {
   const { id } = useParams();
   return (
     <>
-      <div>{`Homes ${id ? `${id}` : '(params not receiveed)'}`}</div>
+      <div>{`Homes ${id ? `${id}` : '(params not received)'}`}</div>
     </>
   );
 };
