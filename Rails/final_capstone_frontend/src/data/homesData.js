@@ -37,6 +37,7 @@ export default {
     has:
       '4 Rooms with private bathroom, 5 bathrooms in total, Main hall, Auxiliary room, Dinning room, Kitchen, TV studio, Outdoor room, Stone pool and Jacuzzi, Sauna, Turkish, Bonsai gardens, 10 parking lots and car and motorcycle workshop, 2 service rooms',
     price: 'US$ 5,500,000.00',
+    coordinates: [6.1992399, -75.5660682],
   },
   home2: {
     id: 2,
@@ -48,6 +49,7 @@ export default {
     has:
       'Playroom, Pub, 18-hole golf course - Golf cart rental, Tennis courts, Swimming pools, Bicycle rental, Walking trails, Restaurant, Medical Center, A great lake where to practice water sports',
     price: 'US$ 1,250,280.00',
+    coordinates: [4.5489, -74.5352],
   },
   home3: {
     id: 3,
@@ -59,6 +61,7 @@ export default {
     has:
       'Two levels, 4 Bedrooms (master bedroom with walk-in closet and private bathroom), 2 bathrooms, Social Bathroom, 2 rooms, Dinning room, TV studio, Open kitchen, Fourth of clothes, Terrace, Balcony, Floors in marble and porcelain, Embedded wood furniture, 2 Garages, Deposit',
     price: 'US$ 361,257.65',
+    coordinates: [5.6365, -73.5271],
   },
   home4: {
     id: 4,
@@ -70,6 +73,7 @@ export default {
     has:
       'Duplex penthouse with 600sqm, Large interiors, Excellent design, 1 complete suite with closet, Glass windows from ceiling to floor, American kitchen in white marble, Large terrace with garden and jacuzzi',
     price: 'US$ 2,000,000',
+    coordinates: [6.1992399, -75.5660682],
   },
   home5: {
     id: 5,
@@ -81,6 +85,7 @@ export default {
     has:
       '500 square meters area, Impeccable design, with a lot of luxury and good taste, 3 full and luxurious suites, Master suite with heated bath and whirlpool, Spacious living and dining rooms with large windows that offer breathtaking views, Both natural and artificial lighting create an incredible and unique atmosphere, Exclusive wine cellar in one of the living rooms, Private gym',
     price: 'US$ 1,500,000',
+    coordinates: [6.1992399, -75.5660682],
   },
   index(n) {
     return this[Object.keys(this)[n]];

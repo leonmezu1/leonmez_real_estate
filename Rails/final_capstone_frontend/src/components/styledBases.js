@@ -49,6 +49,11 @@ export const BaseButton = css`
   }
 `;
 
+export const shadowed = css`
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+`;
+
 export const BaseModal = css`
   width: fit-content;
   position: absolute;
@@ -202,8 +207,7 @@ export const ActionsContainer = styled.div`
     margin-top: 0.5rem;
   }
 
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px,
-    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+  ${shadowed}
 
   @media screen and (max-width: 768px) {
     width: 50vw;
@@ -259,8 +263,7 @@ export const Form = styled.form`
   background: #fff;
   padding: 3rem;
   border-radius: 1rem;
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px,
-    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+  ${shadowed}
 `;
 
 export const Label = styled.label`

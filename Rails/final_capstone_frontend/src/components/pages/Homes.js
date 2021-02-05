@@ -1,10 +1,17 @@
 import { useParams } from 'react-router-dom';
+import HomesGrid from './HomesGrid';
 
 const Homes = () => {
   const { id } = useParams();
   return (
     <>
-      <div>{`Homes ${id ? `${id}` : '(params not received)'}`}</div>
+      {id ? (
+        `${id}`
+      ) : (
+        <>
+          <HomesGrid />
+        </>
+      )}
     </>
   );
 };
