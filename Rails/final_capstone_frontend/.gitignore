@@ -22,4 +22,11 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+<<<<<<< HEAD
 .history
+=======
+.history
+.eslintcache
+.netlify
+.eslintcache
+>>>>>>> e20a493e13079d9bd76c5f754056d8a2aa9d9e86
